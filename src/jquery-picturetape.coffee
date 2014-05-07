@@ -20,6 +20,7 @@ class Picturetape
 
     # Default settings
     @settings =
+      classes: []
       id: ''
       x: 0
       y: 0
@@ -42,6 +43,8 @@ class Picturetape
       $(_this.el).append(_this.image)
       # set the ID if needed
       _this.image.attr 'id', _this.settings.id unless _this.settings.id == ''
+      # add the classes
+      _this.image.addClass _this.settings.classes.join(" ")
       # update the position
       _this.update()
       # on resize, also update the position

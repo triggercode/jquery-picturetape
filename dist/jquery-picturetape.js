@@ -29,6 +29,7 @@
         throw new Error('Error: Please specify the src option');
       }
       this.settings = {
+        classes: [],
         id: '',
         x: 0,
         y: 0,
@@ -47,6 +48,7 @@
         if (_this.settings.id !== '') {
           _this.image.attr('id', _this.settings.id);
         }
+        _this.image.addClass(_this.settings.classes.join(" "));
         _this.update();
         return $(window).on('resize', _this.update.bind(_this));
       });
