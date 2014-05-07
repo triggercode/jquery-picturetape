@@ -6,6 +6,7 @@
 		<style>
 			html, body {
 				height: 100%;
+				margin: 0px;
 			}
 			#test-container {
 				margin: auto;
@@ -16,11 +17,7 @@
 		</style>
 	</head>
 	<body>
-
-		<div id="test-container">
-	
-		</div>
-		
+		<div id="test-container"></div>
 	</body>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
@@ -29,8 +26,8 @@
 	<script>
 		// ignore, only for testing
 		keep_container_vertically_centered = function() {
-			var margin_top = $(window).height() / 4;
-			$('#test-container').css('margin-top', margin_top+'px')
+			var top = $(window).height() / 4;
+			$('#test-container').css('top', top+'px')
 		}
 		$(document).ready(function() {
 			
@@ -146,6 +143,42 @@
 				y: 100,
 				anchor_x: 0,
 				anchor_y: 0
+			});
+
+			// append bottom-right-outside
+			$('body').picturetape({
+				src: 'images/test.png',
+				x: 50,
+				y: 0,
+				anchor_x: 50,
+				anchor_y: 0
+			});
+
+			// append bottom-right-outside
+			$('body').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 50,
+				anchor_x: 100,
+				anchor_y: 50
+			});
+
+			// append bottom-right-outside
+			$('body').picturetape({
+				src: 'images/test.png',
+				x: 50,
+				y: 100,
+				anchor_x: 50,
+				anchor_y: 100
+			});
+
+			// append bottom-right-outside
+			$('body').picturetape({
+				src: 'images/test.png',
+				x: 0,
+				y: 50,
+				anchor_x: 0,
+				anchor_y: 50
 			});
 		});
 	</script>
