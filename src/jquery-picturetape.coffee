@@ -20,6 +20,7 @@ class Picturetape
 
     # Default settings
     @settings =
+      id: ''
       x: 0
       y: 0
       anchor_x: 0
@@ -39,6 +40,8 @@ class Picturetape
     @image = $('<img/>').attr('src', @settings.src).load ->
       # append the image to the dom
       $(_this.el).append(_this.image)
+      # set the ID if needed
+      _this.image.attr 'id', _this.settings.id unless _this.settings.id == ''
       # update the position
       _this.update()
       # on resize, also update the position
