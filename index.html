@@ -9,6 +9,15 @@
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+		#sandbox-dummy {
+			border: 2px solid teal;
+			height: 100px;
+			width: 100px;
+			margin: 50px;
+		}
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -49,6 +58,30 @@ $(document).ready(function() {
 		src: 'path/to/image.png'
 	});
 });</pre>
+    			</div>
+    			<!-- SANDBOX -->
+    			<div id="sandbox">
+    				<h2 class="page-header">Sandbox</h2>
+    				<div class="row">
+    					<div class="col-sm-3">
+		    				x: <input id="x" type="text" size="2" value="0"><br>
+		    				y: <input id="y" type="text" size="2" value="0">
+	    				</div>
+	    				<div class="col-sm-3">
+		    				offset_x: <input id="offset_x" type="text" size="2" value="0"><br>
+		    				offset_y: <input id="offset_y" type="text" size="2" value="0">
+	    				</div>
+	    				<div class="col-sm-3">
+		    				anchor_x: <input id="anchor_x" type="text" size="2" value="0"><br>
+		    				anchor_y: <input id="anchor_y" type="text" size="2" value="0">
+	    				</div>
+	    				<div class="col-sm-3">
+		    				<button class="btn btn-default" id="update">update</button>
+	    				</div>
+	    			</div>
+    				<div id="sandbox-dummy">
+    					
+    				</div>
     			</div>
     			<!-- EXAMPLES -->
     			<div id="usage">
@@ -172,5 +205,25 @@ $(selector).picturetape(options);
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="dist/jquery-picturetape.js"></script>
+
+	<script>
+
+		$(document).ready(function() {
+			$('#update').on('click', function() {
+				$('#sandbox-dummy').empty()
+				console.log($('#anchor_x').val());
+				$('#sandbox-dummy').picturetape({
+					src: 'tests/images/test.png',
+					x: $('#x').val(),
+					y: $('#y').val(),
+					offset_x: $('#offset_x').val(),
+					offset_y: $('#offset_y').val(),
+					anchor_x: $('#anchor_x').val(),
+					anchor_y: $('#anchor_y').val()
+				});
+			});
+		});
+
+	</script>
   </body>
 </html>
