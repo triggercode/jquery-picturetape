@@ -14,6 +14,12 @@
 				height: 50%;
 				border: 2px solid black;
 			}
+			#top-left-inside {
+				border: 2px solid orange;
+			}
+			.with-background {
+				background-color: #89ccca;
+			}
 		</style>
 	</head>
 	<body>
@@ -36,7 +42,9 @@
 			
 			// append top-left-inside
 			$('#test-container').picturetape({
-				src: 'images/test.png'
+				src: 'images/test.png',
+				id: 'top-left-inside',
+				classes: ['with-background']
 			});
 
 			// append top-left-outside

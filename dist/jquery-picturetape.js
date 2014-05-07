@@ -29,6 +29,8 @@
         throw new Error('Error: Please specify the src option');
       }
       this.settings = {
+        classes: [],
+        id: '',
         x: 0,
         y: 0,
         anchor_x: 0,
@@ -43,6 +45,10 @@
       _this = this;
       this.image = $('<img/>').attr('src', this.settings.src).load(function() {
         $(_this.el).append(_this.image);
+        if (_this.settings.id !== '') {
+          _this.image.attr('id', _this.settings.id);
+        }
+        _this.image.addClass(_this.settings.classes.join(" "));
         _this.update();
         return $(window).on('resize', _this.update.bind(_this));
       });
