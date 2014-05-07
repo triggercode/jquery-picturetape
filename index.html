@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>jQuery Picturetape - Documentation</title>
 
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -17,9 +17,160 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-8 col-sm-offset-2">
+    			<!-- HEADER -->
+    			<div class="page-header">
+    			  <h1>jQuery Picturetape<br><small>Tape your pictures to any DOM element.</small></h1>
+    			</div>
+				<!-- INTRODUCTION -->
+    			<div id="introduction">
+    				<h2 class="page-header">Introduction</h2>
+    				<p>
+    					From time to time designers might want you to add images to your website. But they want to add them to the oddest places - at least you think so. There is nothing wrong with
+    					the place the pictures shall be added, but you know that with pure HTML/CSS the positioning might become hard. This is why we created <strong>Picturetape</strong>.
+    				</p>
+    				<p>
+    					<strong>With Picturetape you can tape your pictures to any DOM element in a very flexible way.</strong>
+    				</p>
+    			</div>
+				<!-- QUICKSTART -->
+    			<div id="quickstart">
+    				<h2 class="page-header">Quickstart</h2>
+    				<ol>
+    					<li>reference the jQuery javascript</li>
+    					<li>reference jQuery Picturetape javascript</li>
+    					<li>initialize your first image</li>
+    				</ol>
+<pre>
+$(document).ready(function() {
+	$('#custom-element').picturetape({
+		src: 'path/to/image.png'
+	});
+});</pre>
+    			</div>
+    			<!-- EXAMPLES -->
+    			<div id="usage">
+    				<h2 class="page-header">Usage</h2>
+					<h3>Positioning</h3>
+					<h4>Using Relative Positioning</h4>
+					<p>
+						Use the options <kbd>x</kbd> and <kbd>y</kbd> to position the image using relative/percent values.
+					</p>
+					<p>This example tapes the top-left corner of the image to the center of #custom-element:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	x: 50,
+	y: 50
+});</pre>
+					<h4>Using Absolute Positioning</h4>
+					<p>Use the options <kbd>offset_x</kbd> and <kbd>offset_y</kbd> to position the image using pixel values.</p>
+					<p>With the options of this example you can tape the image to the #custom-element with a x-offset of 10 pixel and a y-offset of 15 pixel:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	offset_x: 10,
+	offset_y: 15
+});</pre>
+					<h4>Using Both in Combination</h4>
+					<p>Combine <kbd>x</kbd>, <kbd>y</kbd>, <kbd>offset_x</kbd> and <kbd>offset_y</kbd> to unleash the power of <strong>Picturetape</strong>.</p>
+					<p>This example will tape the image to the right middle of #custom-element and offset it by (10,15) pixels afterwards.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	x: 100,
+	y: 50,
+	offset_x: 10,
+	offset_y: 15
+});</pre>
+					<h4>Changing the Image Anchor</h4>
+					<p>
+						Usually images are positioned using the <em>top-left corner</em> as anchor. With <strong>Picturetape</strong> you can change this behaviour
+						using the <kbd>anchor_x</kbd> and <kbd>anchor_y</kbd> values. Those are specified using percentual values.
+					</p>
+					<p>Using the values of this example the center of the image will be taped to the #custom-element. As we did not specify anything else this will be the top-left corner:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	anchor_x: 50,
+	anchor_y: 50
+});</pre>
+					<p>You can use all options in combination to position your pictures as you wish.</p>
+					<h3>Specifying the HTML Id Attribute</h3>
+					<p>Specify the id of the image using the <kbd>id</kbd> option.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	id: 'unique-id'
+});</pre>
+					<h3>Specifying HTML Classes</h3>
+					<p>To specify classes the image will receive add an <strong>array</strong> with class names via the <kbd>classes</kbd> option.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	classes: ['class-1', 'class-2']
+});</pre>
+    			</div>
+				<!-- REFERENCE -->
+				<div id="api-reference">
+					<h2 class="page-header">API Reference</h2>
+					<h3>Function</h3>
+<pre>
+$(selector).picturetape(options);
+</pre>
+
+					<h3>Options</h3>
+					<p>The only <code>required</code> option is the <kbd>src</kbd> option. But without positioning information you would not need <strong>Picturetape</strong>. So consider using them.</p>
+					<dl class="dl-horizontal">
+						<dt><kbd>src</kbd></dt>
+						<dd>A valid URL of the image that will be loaded and inserted into the DOM.</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>x</kbd></dt>
+						<dd>
+							A numeric value to specify the x position relative to the parents width.<br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>y</kbd></dt>
+						<dd>
+							A numeric value to specify the y position relative to the parents height.<br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(-n..+n)</small> <kbd>offset_x</kbd></dt>
+						<dd>A numeric value to specify a absolute pixel offset on the x-axis. Negative values are possible.</dd>
+						<dt><small class="text-muted">(-n..+n)</small> <kbd>offset_y</kbd></dt>
+						<dd>A numeric value to specify a absolute pixel offset on the y-axis. Negative values are possible.</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>anchor_x</kbd></dt>
+						<dd>
+							A numeric value to specify the anchor of image relative to its width. <br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>anchor_y</kbd></dt>
+						<dd>
+							A numeric value to specify the anchor of image relative to its height. <br>
+							0 would be top, 50 would be middle, 100 would be bottom.
+						</dd>
+					</dl>
+				</div>
+
+    		</div>
+    	</div>
+
+    	<div class="row">
+    		<div class="col-sm-8 col-sm-offset-2 text-center">
+    			<footer>
+    				<hr>
+    				<p><a href="http://www.triggerco.de" target="_blank"><img src="http://www.triggerco.de/wp-content/themes/triggercode/images/lg_triggercode.png" width="150px" alt="triggercode GmbH"></a></p>
+    				<br>
+    				<p><small class="text-muted">2014 Created by triggercode GmbH</small></p>
+    				<br>
+    			</footer>
+    		</div>
+    	</div>
+    </div>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-	<script src="../dist/jquery-picturetape.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="dist/jquery-picturetape.js"></script>
   </body>
 </html>
