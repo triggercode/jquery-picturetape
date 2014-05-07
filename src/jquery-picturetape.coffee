@@ -16,6 +16,11 @@ class Picturetape
       offset_y: 0
     # Merge default settings with options.
     @settings = $.extend @settings, options
+    # ensure numerical values
+    foreach set in ['x', 'y', 'anchor_x', 'anchor_y', 'offset_x', 'offset_y']
+      @settings[set] = Number(@settings[set])
+
+
     # set parent to relative if needed
     if $(@el).css('position') == 'static'
       $(el).css 'position', 'relative'
