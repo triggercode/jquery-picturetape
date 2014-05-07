@@ -14,6 +14,7 @@
   "devDependencies": {
     "gulp": "^3.6.2",
     "coffee-script": "^1.7.1",
-    "gulp-coffee": "^1.4.2"
+    "gulp-coffee": "^1.4.2",
+    "gulp-plumber": "^0.6.1"
   }
 }
