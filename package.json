@@ -1,0 +1,19 @@
+{
+  "name": "jquery-picturetape",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "coffee-script": "^1.7.1",
+    "gulp-coffee": "^1.4.2"
+  }
+}
