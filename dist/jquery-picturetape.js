@@ -6,7 +6,7 @@
 
   Picturetape = (function() {
     function Picturetape(el, options) {
-      var _this;
+      var set, _i, _len, _ref, _this;
       this.el = el;
       this.options = options;
       this.update = __bind(this.update, this);
@@ -24,6 +24,11 @@
         offset_y: 0
       };
       this.settings = $.extend(this.settings, options);
+      _ref = ['x', 'y', 'anchor_x', 'anchor_y', 'offset_x', 'offset_y'];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        set = _ref[_i];
+        this.settings[set] = Number(this.settings[set]);
+      }
       if ($(this.el).css('position') === 'static') {
         $(el).css('position', 'relative');
       }
