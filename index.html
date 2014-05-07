@@ -11,10 +11,27 @@
 
     <style>
 		#sandbox-dummy {
-			border: 2px solid teal;
+			border: 2px solid orange;
 			height: 100px;
 			width: 100px;
 			margin: 50px;
+		}
+		input[type=text] {
+			border: 1px solid #999;
+			border-radius: 4px;
+			margin: 1px 2px;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+			padding: 1px 5px;
+		}
+		#to-top {
+			border-radius: 16px;
+			padding-left: 9px;
+			padding-right: 9px;
+			position: fixed;
+			bottom: 15px;
+			right: 15px;
 		}
     </style>
 
@@ -26,6 +43,7 @@
     <![endif]-->
   </head>
   <body>
+  	<button href="#" id="to-top" class="btn btn-inverse"><span class="glyphicon glyphicon-arrow-up"></span></button>
     <div class="container">
     	<div class="row">
     		<div class="col-sm-8 col-sm-offset-2">
@@ -33,12 +51,20 @@
     			<div class="page-header">
     			  <h1>jQuery Picturetape<br><small>Tape your pictures to any DOM element.</small></h1>
     			</div>
+    			<!-- NAVIGATION -->
+    			<ul class="nav">
+    				<li><a href="#introduction">1. Introduction</a></li>
+    				<li><a href="#quickstart">2. Quickstart</a></li>
+    				<li><a href="#sandbox">3. Sandbox</a></li>
+    				<li><a href="#usage">4. Usage</a></li>
+    				<li><a href="#api-reference">5. API Reference</a></li>
+    			</ul>
 				<!-- INTRODUCTION -->
     			<div id="introduction">
-    				<h2 class="page-header">Introduction</h2>
+    				<h2 class="page-header">1. Introduction</h2>
     				<p>
     					From time to time designers might want you to add images to your website. But they want to add them to the oddest places - at least you think so. There is nothing wrong with
-    					the place the pictures shall be added, but you know that with pure HTML/CSS the positioning might become hard. This is why we created <strong>Picturetape</strong>.
+    					the place the pictures shall be added, but you know that with pure HTML/CSS the positioning might be very hard. This is why we created <strong>Picturetape</strong>.
     				</p>
     				<p>
     					<strong>With Picturetape you can tape your pictures to any DOM element in a very flexible way.</strong>
@@ -46,7 +72,7 @@
     			</div>
 				<!-- QUICKSTART -->
     			<div id="quickstart">
-    				<h2 class="page-header">Quickstart</h2>
+    				<h2 class="page-header">2. Quickstart</h2>
     				<ol>
     					<li>reference the jQuery javascript</li>
     					<li>reference jQuery Picturetape javascript</li>
@@ -61,19 +87,20 @@ $(document).ready(function() {
     			</div>
     			<!-- SANDBOX -->
     			<div id="sandbox">
-    				<h2 class="page-header">Sandbox</h2>
+    				<h2 class="page-header">3. Sandbox</h2>
+    				<p>Use this sandbox to play around. Just fill in some values.</p>
     				<div class="row">
     					<div class="col-sm-3">
-		    				x: <input id="x" type="text" size="2" value="0"><br>
-		    				y: <input id="y" type="text" size="2" value="0">
+		    				x: <input id="x" type="text" size="2" value="0"> %<br>
+		    				y: <input id="y" type="text" size="2" value="0"> %
 	    				</div>
 	    				<div class="col-sm-3">
-		    				offset_x: <input id="offset_x" type="text" size="2" value="0"><br>
-		    				offset_y: <input id="offset_y" type="text" size="2" value="0">
+		    				offset_x: <input id="offset_x" type="text" size="2" value="0"> px<br>
+		    				offset_y: <input id="offset_y" type="text" size="2" value="0"> px
 	    				</div>
 	    				<div class="col-sm-3">
-		    				anchor_x: <input id="anchor_x" type="text" size="2" value="0"><br>
-		    				anchor_y: <input id="anchor_y" type="text" size="2" value="0">
+		    				anchor_x: <input id="anchor_x" type="text" size="2" value="50" > %<br>
+		    				anchor_y: <input id="anchor_y" type="text" size="2" value="50"> %
 	    				</div>
 	    				<div class="col-sm-3">
 		    				<button class="btn btn-default" id="update">update</button>
@@ -85,7 +112,7 @@ $(document).ready(function() {
     			</div>
     			<!-- EXAMPLES -->
     			<div id="usage">
-    				<h2 class="page-header">Usage</h2>
+    				<h2 class="page-header">4. Usage</h2>
 					<h3>Positioning</h3>
 					<h4>Using Relative Positioning</h4>
 					<p>
@@ -148,7 +175,7 @@ $('#custom-element').picturetape({
     			</div>
 				<!-- REFERENCE -->
 				<div id="api-reference">
-					<h2 class="page-header">API Reference</h2>
+					<h2 class="page-header">5. API Reference</h2>
 					<h3>Function</h3>
 <pre>
 $(selector).picturetape(options);
@@ -207,20 +234,33 @@ $(selector).picturetape(options);
 	<script src="dist/jquery-picturetape.js"></script>
 
 	<script>
+		function update() {
+			$('#sandbox-dummy').empty()
+			$('#sandbox-dummy').picturetape({
+				src: 'tests/images/test.png',
+				x: $('#x').val(),
+				y: $('#y').val(),
+				offset_x: $('#offset_x').val(),
+				offset_y: $('#offset_y').val(),
+				anchor_x: $('#anchor_x').val(),
+				anchor_y: $('#anchor_y').val()
+			});
+		}
 
 		$(document).ready(function() {
-			$('#update').on('click', function() {
-				$('#sandbox-dummy').empty()
-				console.log($('#anchor_x').val());
-				$('#sandbox-dummy').picturetape({
-					src: 'tests/images/test.png',
-					x: $('#x').val(),
-					y: $('#y').val(),
-					offset_x: $('#offset_x').val(),
-					offset_y: $('#offset_y').val(),
-					anchor_x: $('#anchor_x').val(),
-					anchor_y: $('#anchor_y').val()
-				});
+			update();
+			$('#update').on('click', update);
+			$('input').on('focusout', update);
+			$('input').on('keyup', function(e) {
+				if (e.keyCode == 13)
+					update();
+			});
+			$('h2').each(function(idx, el) {
+				if (idx > 0)
+					$('<div class="text-right"><a href="#">top <span class="glyphicon glyphicon-arrow-up"></span></a></div>').insertBefore(el);
+			});
+			$('#to-top').on('click', function() {
+				$('body').animate({scrollTop: 0}, 500);
 			});
 		});
 
