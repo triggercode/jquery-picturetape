@@ -4,21 +4,6 @@
 
   $ = jQuery;
 
-
-  /*
-  Anchors are like a clock, they start at top center with 0 and increment
-  clockwise.
-  0 - top center
-  1 - top right
-  2 - middle right
-  3 - bottom right
-  4 - bottom center
-  5 - bottom left
-  6 - middle left
-  7 - top left
-  8 - center
-   */
-
   Picturetape = (function() {
     function Picturetape(el, options) {
       var _this;
@@ -77,12 +62,6 @@
 
   $.fn.extend({
     picturetape: function(options) {
-      var log;
-      log = function(msg) {
-        if (settings.debug) {
-          return typeof console !== "undefined" && console !== null ? console.log(msg) : void 0;
-        }
-      };
       return this.each(function() {
         return new Picturetape(this, options);
       });
