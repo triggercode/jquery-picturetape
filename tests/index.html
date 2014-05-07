@@ -4,12 +4,14 @@
 	<head>
 		<title>jQuery Picturetape test</title>
 		<style>
+			html, body {
+				height: 100%;
+			}
 			#test-container {
-				width: 640px;
-				height: 480px;
 				margin: auto;
+				width: 50%;
+				height: 50%;
 				border: 2px solid black;
-				margin-top: 120px;
 			}
 		</style>
 	</head>
@@ -25,9 +27,125 @@
 	<script src="../dist/jquery-picturetape.js"></script>
 
 	<script>
+		// ignore, only for testing
+		keep_container_vertically_centered = function() {
+			var margin_top = $(window).height() / 4;
+			$('#test-container').css('margin-top', margin_top+'px')
+		}
 		$(document).ready(function() {
+			
+			keep_container_vertically_centered()
+			$(window).on('resize', keep_container_vertically_centered)
+			
+			// append top-left-inside
+			$('#test-container').picturetape({
+				src: 'images/test.png'
+			});
+
+			// append top-left-outside
 			$('#test-container').picturetape({
 				src: 'images/test.png',
+				anchor_x: 100,
+				anchor_y: 100
+			});
+
+			// append center
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 50,
+				y: 50,
+				anchor_x: 50,
+				anchor_y: 50
+			});
+
+			// append top-right-insode
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 0,
+				anchor_x: 100,
+				anchor_y: 0
+			});
+
+			// append top-right-outside
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 0,
+				anchor_x: 0,
+				anchor_y: 100
+			});
+
+			// append top-center
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 50,
+				y: 0,
+				anchor_x: 50,
+				anchor_y: 50
+			});
+
+			// append bottom-center
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 50,
+				y: 100,
+				anchor_x: 50,
+				anchor_y: 50
+			});
+
+			// append left-middle
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 0,
+				y: 50,
+				anchor_x: 50,
+				anchor_y: 50
+			});
+
+			// append right-middle
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 50,
+				anchor_x: 50,
+				anchor_y: 50
+			});
+
+			// append bottom-left-inside
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 0,
+				y: 100,
+				anchor_x: 0,
+				anchor_y: 100
+			});
+
+			// append bottom-left-outside
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 0,
+				y: 100,
+				anchor_x: 100,
+				anchor_y: 0
+			});
+
+			// append bottom-left-inside
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 100,
+				anchor_x: 100,
+				anchor_y: 100
+			});
+
+			// append bottom-right-outside
+			$('#test-container').picturetape({
+				src: 'images/test.png',
+				x: 100,
+				y: 100,
+				anchor_x: 0,
+				anchor_y: 0
 			});
 		});
 	</script>

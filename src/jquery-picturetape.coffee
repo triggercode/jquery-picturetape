@@ -22,7 +22,8 @@ class Picturetape
     @settings =
       x: 0
       y: 0
-      anchor: 7
+      anchor_x: 0
+      anchor_y: 0
       offset_x: 0
       offset_y: 0
 
@@ -36,55 +37,31 @@ class Picturetape
     # load the image, update the position
     _this = @
     @image = $('<img/>').attr('src', @settings.src).load ->
+      # append the image to the dom
       $(_this.el).append(_this.image)
+      # update the position
       _this.update()
-
+      # on resize, also update the position
       $(window).on 'resize', _this.update.bind(_this)
-      # $dom_image.css 'display', 'none'
-      # sticker = new Sticker $dom_image, parent, anchor, x, y, offset_x, offset_y
-      # sticker.update()
-
-    # $(@parent).append @image
-    # $(@parent).css 'position', 'relative'
-    # $(window).on 'resize', =>
-    #   @update()
 
   update: =>
-    # @image.css 'display', 'none'
-
+    # calculate the parent height and width
     base_height = $(@el).innerHeight()
     base_width = $(@el).innerWidth()
 
+    # calc the x position
     pos_x = base_width / 100 * @settings.x
-    pos_x = @anchor_x pos_x
+    pos_x = pos_x - @image.width() / 100 * @settings.anchor_x
+    pos_x += @settings.offset_x
+    # calc the y position
     pos_y = base_height / 100 * @settings.y
-    pos_y = @anchor_y pos_y
-
-    if @offset_x
-      pos_x += @offset_x
-
-    if @offset_y
-      pos_y += @offset_y
+    pos_y = pos_y - @image.height() / 100 * @settings.anchor_y
+    pos_y += @settings.offset_y
 
     @image.css
       position: "absolute"
       top: pos_y
       left: pos_x
-      display: 'block'
-
-  anchor_x: (x) =>
-    if 1 <= @settings.anchor <= 3
-      return x - @image.width()
-    else if @settings.anchor in [0,4,8]
-      return x - @image.width() * 0.5
-    return x
-
-  anchor_y: (y) =>
-    if 3 <= @settings.anchor <= 5
-      return y - @image.height()
-    else if @settings.anchor in [2,6,8]
-      return y - @image.height() * 0.5
-    return y
 
 # Adds plugin object to jQuery
 $.fn.extend
