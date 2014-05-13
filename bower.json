@@ -11,7 +11,8 @@
         "gulpfile.js",
         "bower.json",
         "package.json",
-        "README.md"
+        "readme.md",
+        "index.html"
     ],
     "dependencies": {
         "jquery": ">=1.10.2"
