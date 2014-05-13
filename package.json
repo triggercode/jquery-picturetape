@@ -1,6 +1,6 @@
 {
   "name": "jquery-picturetape",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Tape your pictures to any DOM element with flexible positioning.",
   "main": "dist/jquery-picturetape.js",
   "directories": {
