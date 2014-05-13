@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Picturetape - Documentation</title>
+
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+		#sandbox-dummy {
+			border: 2px solid orange;
+			height: 100px;
+			width: 100px;
+			margin: 50px;
+		}
+		input[type=text] {
+			border: 1px solid #999;
+			border-radius: 4px;
+			margin: 1px 2px;
+			text-align: right;
+			color: #333;
+			font-weight: bold;
+			padding: 1px 5px;
+		}
+		#to-top {
+			border-radius: 16px;
+			padding-left: 9px;
+			padding-right: 9px;
+			position: fixed;
+			bottom: 15px;
+			right: 15px;
+		}
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<button href="#" id="to-top" class="btn btn-inverse"><span class="glyphicon glyphicon-arrow-up"></span></button>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-8 col-sm-offset-2">
+    			<!-- HEADER -->
+    			<div class="page-header">
+    			  <h1>jQuery Picturetape<br><small>Tape your pictures to any DOM element.</small></h1>
+    			</div>
+    			<!-- NAVIGATION -->
+    			<ul class="nav">
+    				<li><a href="#introduction">1. Introduction</a></li>
+    				<li><a href="#quickstart">2. Quickstart</a></li>
+    				<li><a href="#sandbox">3. Sandbox</a></li>
+    				<li><a href="#usage">4. Usage</a></li>
+    				<li><a href="#api-reference">5. API Reference</a></li>
+    			</ul>
+				<!-- INTRODUCTION -->
+    			<div id="introduction">
+    				<h2 class="page-header">1. Introduction</h2>
+    				<p>
+    					From time to time designers might want you to add images to your website. But they want to add them to the oddest places - at least you think so. There is nothing wrong with
+    					the place the pictures shall be added, but you know that with pure HTML/CSS the positioning might be very hard. This is why we created <strong>Picturetape</strong>.
+    				</p>
+    				<p>
+    					<strong>With Picturetape you can tape your pictures to any DOM element in a very flexible way.</strong>
+    				</p>
+    			</div>
+				<!-- QUICKSTART -->
+    			<div id="quickstart">
+    				<h2 class="page-header">2. Quickstart</h2>
+    				<ol>
+    					<li>reference the jQuery javascript</li>
+    					<li>reference jQuery Picturetape javascript</li>
+    					<li>initialize your first image</li>
+    				</ol>
+<pre>
+$(document).ready(function() {
+	$('#custom-element').picturetape({
+		src: 'path/to/image.png'
+	});
+});</pre>
+    			</div>
+    			<!-- SANDBOX -->
+    			<div id="sandbox">
+    				<h2 class="page-header">3. Sandbox</h2>
+    				<p>Use this sandbox to play around. Just fill in some values.</p>
+    				<div class="row">
+    					<div class="col-sm-3">
+		    				x: <input id="x" type="text" size="2" value="0"> %<br>
+		    				y: <input id="y" type="text" size="2" value="0"> %
+	    				</div>
+	    				<div class="col-sm-3">
+		    				offset_x: <input id="offset_x" type="text" size="2" value="0"> px<br>
+		    				offset_y: <input id="offset_y" type="text" size="2" value="0"> px
+	    				</div>
+	    				<div class="col-sm-3">
+		    				anchor_x: <input id="anchor_x" type="text" size="2" value="50" > %<br>
+		    				anchor_y: <input id="anchor_y" type="text" size="2" value="50"> %
+	    				</div>
+	    				<div class="col-sm-3">
+		    				<button class="btn btn-default" id="update">update</button>
+	    				</div>
+	    			</div>
+    				<div id="sandbox-dummy">
+    					
+    				</div>
+    			</div>
+    			<!-- EXAMPLES -->
+    			<div id="usage">
+    				<h2 class="page-header">4. Usage</h2>
+					<h3>Positioning</h3>
+					<h4>Using Relative Positioning</h4>
+					<p>
+						Use the options <kbd>x</kbd> and <kbd>y</kbd> to position the image using relative/percent values.
+					</p>
+					<p>This example tapes the top-left corner of the image to the center of #custom-element:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	x: 50,
+	y: 50
+});</pre>
+					<h4>Using Absolute Positioning</h4>
+					<p>Use the options <kbd>offset_x</kbd> and <kbd>offset_y</kbd> to position the image using pixel values.</p>
+					<p>With the options of this example you can tape the image to the #custom-element with a x-offset of 10 pixel and a y-offset of 15 pixel:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	offset_x: 10,
+	offset_y: 15
+});</pre>
+					<h4>Using Both in Combination</h4>
+					<p>Combine <kbd>x</kbd>, <kbd>y</kbd>, <kbd>offset_x</kbd> and <kbd>offset_y</kbd> to unleash the power of <strong>Picturetape</strong>.</p>
+					<p>This example will tape the image to the right middle of #custom-element and offset it by (10,15) pixels afterwards.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	x: 100,
+	y: 50,
+	offset_x: 10,
+	offset_y: 15
+});</pre>
+					<h4>Changing the Image Anchor</h4>
+					<p>
+						Usually images are positioned using the <em>top-left corner</em> as anchor. With <strong>Picturetape</strong> you can change this behaviour
+						using the <kbd>anchor_x</kbd> and <kbd>anchor_y</kbd> values. Those are specified using percentual values.
+					</p>
+					<p>Using the values of this example the center of the image will be taped to the #custom-element. As we did not specify anything else this will be the top-left corner:</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	anchor_x: 50,
+	anchor_y: 50
+});</pre>
+					<p>You can use all options in combination to position your pictures as you wish.</p>
+					<h3>Specifying the HTML Id Attribute</h3>
+					<p>Specify the id of the image using the <kbd>id</kbd> option.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	id: 'unique-id'
+});</pre>
+					<h3>Specifying HTML Classes</h3>
+					<p>To specify classes the image will receive add an <strong>array</strong> with class names via the <kbd>classes</kbd> option.</p>
+<pre>
+$('#custom-element').picturetape({
+	src: 'path/to/image.png',
+	classes: ['class-1', 'class-2']
+});</pre>
+    			</div>
+				<!-- REFERENCE -->
+				<div id="api-reference">
+					<h2 class="page-header">5. API Reference</h2>
+					<h3>Function</h3>
+<pre>
+$(selector).picturetape(options);
+</pre>
+
+					<h3>Options</h3>
+					<p>The only <code>required</code> option is the <kbd>src</kbd> option. But without positioning information you would not need <strong>Picturetape</strong>. So consider using them.</p>
+					<dl class="dl-horizontal">
+						<dt><kbd>src</kbd></dt>
+						<dd>A valid URL of the image that will be loaded and inserted into the DOM.</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>x</kbd></dt>
+						<dd>
+							A numeric value to specify the x position relative to the parents width.<br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>y</kbd></dt>
+						<dd>
+							A numeric value to specify the y position relative to the parents height.<br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(-n..+n)</small> <kbd>offset_x</kbd></dt>
+						<dd>A numeric value to specify a absolute pixel offset on the x-axis. Negative values are possible.</dd>
+						<dt><small class="text-muted">(-n..+n)</small> <kbd>offset_y</kbd></dt>
+						<dd>A numeric value to specify a absolute pixel offset on the y-axis. Negative values are possible.</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>anchor_x</kbd></dt>
+						<dd>
+							A numeric value to specify the anchor of image relative to its width. <br>
+							0 would be left, 50 would be center, 100 would be right.
+						</dd>
+						<dt><small class="text-muted">(0-100)</small> <kbd>anchor_y</kbd></dt>
+						<dd>
+							A numeric value to specify the anchor of image relative to its height. <br>
+							0 would be top, 50 would be middle, 100 would be bottom.
+						</dd>
+					</dl>
+				</div>
+
+    		</div>
+    	</div>
+
+    	<div class="row">
+    		<div class="col-sm-8 col-sm-offset-2 text-center">
+    			<footer>
+    				<hr>
+    				<p><a href="http://www.triggerco.de" target="_blank"><img src="http://www.triggerco.de/wp-content/themes/triggercode/images/lg_triggercode.png" width="150px" alt="triggercode GmbH"></a></p>
+    				<br>
+    				<p><small class="text-muted">2014 Created by triggercode GmbH</small></p>
+    				<br>
+    			</footer>
+    		</div>
+    	</div>
+    </div>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="dist/jquery-picturetape.js"></script>
+
+	<script>
+		function update() {
+			$('#sandbox-dummy').empty()
+			$('#sandbox-dummy').picturetape({
+				src: 'tests/images/test.png',
+				x: $('#x').val(),
+				y: $('#y').val(),
+				offset_x: $('#offset_x').val(),
+				offset_y: $('#offset_y').val(),
+				anchor_x: $('#anchor_x').val(),
+				anchor_y: $('#anchor_y').val()
+			});
+		}
+
+		$(document).ready(function() {
+			console.log("...");
+			update();
+			$('#update').on('click', update);
+			$('input').on('focusout', update);
+			$('input').on('keyup', function(e) {
+				if (e.keyCode == 13)
+					update();
+			});
+			$('h2').each(function(idx, el) {
+				if (idx > 0)
+					$('<div class="text-right"><a href="#">top <span class="glyphicon glyphicon-arrow-up"></span></a></div>').insertBefore(el);
+			});
+			$('#to-top').on('click', function() {
+				$('body').animate({scrollTop: 0}, 500);
+			});
+		});
+
+	</script>
+  </body>
+</html>
